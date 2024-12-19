@@ -14,7 +14,7 @@ const Slider = () => {
 
     useEffect(() => {
       const timerId = setInterval(() => {
-        setIndex((prevIndex) => (prevIndex + 1) % byDateDesc.length);
+        setIndex((nextIndex) => (nextIndex + 1) % byDateDesc.length);
       }, 5000);
   
       return () => clearInterval(timerId);
