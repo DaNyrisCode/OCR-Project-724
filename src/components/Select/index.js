@@ -16,14 +16,14 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
     setCollapsed(newValue);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
-      <div className="Select">
+      <div className="Select" aria-label="select">
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
             {value || (!titleEmpty && "Toutes")}
@@ -52,6 +52,7 @@ const Select = ({
         <input type="hidden" value={value || ""} name={name} />
         <button
           type="button"
+          aria-label="collapse-button"
           data-testid="collapse-button-testid"
           className={collapsed ? "open" : "close"}
           onClick={(e) => {
